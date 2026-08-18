@@ -1,0 +1,327 @@
+/**
+ * seats.css - Posicionamento e estilização dos assentos com retratos fotorrealistas e WIN burst
+ */
+
+.table-seats-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.player-seat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 120;
+  transition: all var(--transition-normal);
+}
+
+/* 5 Assentos Estratégicos Perfeitamente Distribuídos na Mesa Oval */
+.seat-bottom-center {
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.seat-top-left {
+  top: -24px;
+  left: 15%;
+}
+
+.seat-top-right {
+  top: -24px;
+  right: 15%;
+}
+
+.seat-left-flank {
+  top: 48%;
+  left: 8px;
+  transform: translateY(-50%);
+}
+
+.seat-right-flank {
+  top: 48%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+
+/* Avatar e Moldura Metálica */
+.avatar-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-circle-frame {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid #94a3b8;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  transition: all 0.3s ease;
+  background: #0d1117;
+}
+
+.is-human .avatar-circle-frame {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 15px rgba(240, 192, 90, 0.4);
+}
+
+.avatar-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Badges de Nível (Lv) e Bandeira */
+.player-level-badge {
+  position: absolute;
+  bottom: 2px;
+  left: -4px;
+  background: #1e293b;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #94a3b8;
+  padding: 1px 4px;
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.player-flag-badge {
+  position: absolute;
+  bottom: 2px;
+  right: -4px;
+  font-size: 13px;
+  z-index: 5;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+}
+
+/* Anel de Progresso Neon Ativo */
+.is-turn-active .avatar-circle-frame {
+  border-color: #22c55e;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.9);
+}
+
+.neon-timer-ring {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #22c55e;
+  border-right-color: #22c55e;
+  animation: neonSpin 1.5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes neonSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Painel de Nome e Saldo */
+.player-info-card {
+  background: rgba(12, 15, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-top: -6px;
+  text-align: center;
+  min-width: 90px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.player-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: #e2e8f0;
+  white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-chips {
+  font-size: 12px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+/* Cartas nos Assentos */
+.seat-cards {
+  display: flex;
+  gap: 2px;
+  margin-top: 4px;
+  z-index: 4;
+}
+
+.is-human .seat-cards {
+  position: absolute;
+  top: -24px;
+  z-index: 10;
+}
+
+.card-tilt-left {
+  transform: rotate(-7deg) translateX(4px);
+}
+
+.card-tilt-right {
+  transform: rotate(7deg) translateX(-4px);
+}
+
+/* Dealer Button - Destaque Metálico em Camada Superior */
+.dealer-button {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 35%, #fff176 0%, #ffd700 50%, #b8860b 100%);
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+  color: #1a1c22;
+  font-size: 11px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+  z-index: 70;
+}
+
+.is-human .dealer-button {
+  top: 2px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+/* Badges de Ação - Posicionamento Inteligente Sem Obstrução */
+.action-badge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  z-index: 65;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: actionPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes actionPop {
+  0% { transform: translateX(-50%) scale(0.6); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* Para o Jogador Humano: Badge flutua ao lado, sem cobrir as cartas centrais */
+.is-human .action-badge {
+  top: 14px;
+  left: auto;
+  right: -75px;
+  transform: none;
+}
+
+.action-fold {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  color: #ffffff;
+}
+
+.action-check {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  color: #ffffff;
+}
+
+.action-call, .action-sb, .action-bb {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #ffffff;
+}
+
+.action-raise {
+  background: linear-gradient(135deg, #facc15 0%, #ca8a04 100%);
+  color: #1a1202;
+}
+
+.action-allin {
+  background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+  color: #ffffff;
+  border-color: #ffd700;
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.7);
+}
+
+.is-folded {
+  opacity: 0.45;
+  filter: grayscale(70%);
+}
+
+/* Efeito Especial WIN Dourado */
+.seat-win-burst {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  animation: winBurstAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.win-ring-glow {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.4) 0%, rgba(250, 204, 21, 0) 70%);
+  border: 2px solid rgba(250, 204, 21, 0.8);
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
+  animation: winPulse 1.2s ease-in-out infinite alternate;
+}
+
+.win-title-badge {
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #eab308, 0 0 20px #eab308, 0 2px 4px #000000;
+  background: linear-gradient(180deg, #fff 0%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 2;
+}
+
+@keyframes winBurstAnim {
+  0% { transform: translateX(-50%) scale(0.4); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+@keyframes winPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}

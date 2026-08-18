@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>VIP Texas Hold'em Portal | Circuito Mundial de Poker</title>
+  <meta name="description" content="Portal completo de Poker Texas Hold'em VIP com Modo Campanha Mundial, Salas Online com Código, avatares fotorrealistas e salvamento de partidas.">
+
+  <!-- Estilos Modulares -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/chips.css">
+  <link rel="stylesheet" href="css/seats.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="poker-app" class="app-container env-felt-emerald">
+
+    <!-- ============================================== -->
+    <!-- 1. PORTAL PRINCIPAL & MODO CAMPANHA            -->
+    <!-- ============================================== -->
+    <div id="screen-portal" class="portal-screen">
+      
+      <!-- Top Header do Portal -->
+      <header class="portal-header">
+        <div class="portal-brand">
+          <span class="brand-crown">👑</span>
+          <h1 class="brand-title">VIP POKER PORTAL</h1>
+        </div>
+
+        <div class="portal-user-bar">
+          <div class="user-bankroll-box">
+            <span class="bankroll-icon">🪙</span>
+            <span id="portal-bankroll" class="bankroll-amount">R$ 10.000</span>
+          </div>
+
+          <div id="portal-vip-badge" class="vip-tier-badge">⭐ VIP Ouro</div>
+
+          <div class="user-level-box">
+            <span id="portal-level" class="level-text">Nível 1</span>
+            <div class="xp-bar-bg">
+              <div id="portal-xp-fill" class="xp-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <button id="btn-daily-bonus" class="btn-daily-bonus">
+            <span>🎁</span>
+            <span>Roleta Diária</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Conteúdo do Portal -->
+      <main class="portal-main">
+        
+        <!-- Banner de Partida Salva (Exibido dinamicamente) -->
+        <div id="saved-match-banner" class="saved-match-banner hidden"></div>
+
+        <!-- Navegação por Abas -->
+        <nav class="portal-nav-tabs">
+          <button class="portal-nav-tab active" data-tab="campaign">
+            <span>🏆</span>
+            <span>Circuito Mundial (Campanha)</span>
+          </button>
+          <button class="portal-nav-tab" data-tab="online">
+            <span>🌐</span>
+            <span>Jogar Online (Sala com Código)</span>
+          </button>
+          <button class="portal-nav-tab" data-tab="cash">
+            <span>⚡</span>
+            <span>Mesa Rápida (Cash Game)</span>
+          </button>
+          <button class="portal-nav-tab" data-tab="career">
+            <span>📊</span>
+            <span>Carreira & Troféus</span>
+          </button>
+          <button class="portal-nav-tab" data-tab="shop">
+            <span>🛍️</span>
+            <span>Loja VIP</span>
+          </button>
+        </nav>
+
+        <!-- ABA 1: MODO CAMPANHA -->
+        <section id="tab-campaign" class="portal-tab-content campaign-section">
+          <div class="section-headline">
+            <h2 class="section-title">World Poker Championship Tour</h2>
+            <p class="section-subtitle">Vença os torneios pelas capitais mundiais do poker, acumule prêmios milionários e conquiste troféus lendários.</p>
+          </div>
+
+          <div id="campaign-cards-grid" class="campaign-cards-grid">
+            <!-- Preenchido dinamicamente via PortalRenderer -->
+          </div>
+        </section>
+
+        <!-- ABA 2: JOGAR ONLINE COM CÓDIGO -->
+        <section id="tab-online" class="portal-tab-content online-section hidden">
+          <div class="section-headline">
+            <h2 class="section-title">Salas Privadas Online</h2>
+            <p class="section-subtitle">Crie uma sala exclusiva com código para jogar com amigos ou entre em uma mesa existente.</p>
+          </div>
+
+          <div class="online-rooms-grid">
+            <!-- Card Criar Sala -->
+            <div class="online-card-box">
+              <h3 class="online-card-title"><span>👑</span> Criar Nova Sala VIP</h3>
+              <p class="online-card-desc">Gere um código de convite exclusivo para seus amigos acessarem a mesma mesa em tempo real.</p>
+              
+              <div class="cash-form-group">
+                <label for="online-stakes-select">Configuração de Blinds</label>
+                <select id="online-stakes-select" class="cash-select">
+                  <option value="5_10_500">Blinds R$ 5 / R$ 10 (Buy-in R$ 500)</option>
+                  <option value="10_20_1000" selected>Blinds R$ 10 / R$ 20 (Buy-in R$ 1.000)</option>
+                  <option value="50_100_5000">Blinds R$ 50 / R$ 100 (Buy-in R$ 5.000)</option>
+                </select>
+              </div>
+
+              <button id="btn-create-online-room" class="btn-start-cash">GERAR CÓDIGO DA SALA</button>
+
+              <div id="room-created-info-box" class="room-created-info hidden">
+                <span class="room-code-tag">CÓDIGO DA SUA SALA:</span>
+                <span id="display-room-code" class="display-room-code">VIP-0000</span>
+                <div class="room-actions-row">
+                  <button id="btn-copy-room-code" class="btn-copy-code">📋 Copiar Código</button>
+                  <button id="btn-copy-room-link" class="btn-copy-link">🔗 Copiar Link</button>
+                </div>
+                <button id="btn-enter-created-room" class="btn-play-chapter" style="width: 100%; margin-top: 6px;">ENTRAR NA MESA AGORA</button>
+              </div>
+            </div>
+
+            <!-- Card Entrar com Código -->
+            <div class="online-card-box">
+              <h3 class="online-card-title"><span>🔑</span> Entrar com Código</h3>
+              <p class="online-card-desc">Digite o código de 6 dígitos que seu amigo compartilhou com você para se juntar à mesa.</p>
+
+              <input type="text" id="input-join-room-code" class="input-room-code" placeholder="VIP-1234" maxlength="8">
+
+              <button id="btn-join-online-room" class="btn-start-cash" style="background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%); color: #fff;">ENTRAR NA SALA</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 3: MESA RÁPIDA (CASH GAME) -->
+        <section id="tab-cash" class="portal-tab-content cash-section hidden">
+          <div class="section-headline">
+            <h2 class="section-title">Mesa Rápida High Roller</h2>
+            <p class="section-subtitle">Escolha seu nível de blinds, feltro preferido e entre instantaneamente no feltro com oponentes de elite.</p>
+          </div>
+
+          <div class="cash-game-panel">
+            <div class="cash-form-group">
+              <label for="cash-stakes-select">Nível de Apostas (Blinds / Buy-in)</label>
+              <select id="cash-stakes-select" class="cash-select">
+                <option value="5_10_500">Mesa VIP: Blinds R$ 5 / R$ 10 (Buy-in R$ 500)</option>
+                <option value="10_20_1000" selected>High Roller: Blinds R$ 10 / R$ 20 (Buy-in R$ 1.000)</option>
+                <option value="50_100_5000">Whale Championship: Blinds R$ 50 / R$ 100 (Buy-in R$ 5.000)</option>
+                <option value="200_400_20000">Super High Roller: Blinds R$ 200 / R$ 400 (Buy-in R$ 20.000)</option>
+              </select>
+            </div>
+
+            <div class="cash-form-group">
+              <label for="cash-felt-select">Cor do Feltro VIP</label>
+              <select id="cash-felt-select" class="cash-select">
+                <option value="felt-emerald" selected>Verde Esmeralda Clássico</option>
+                <option value="felt-royal-blue">Azul Safira Noturno</option>
+                <option value="felt-crimson">Vermelho Carmesim Real</option>
+                <option value="felt-obsidian">Preto Ônix High-Roller</option>
+              </select>
+            </div>
+
+            <div class="cash-form-group">
+              <label for="cash-bots-select">Quantidade de Oponentes</label>
+              <select id="cash-bots-select" class="cash-select">
+                <option value="3">3 Oponentes (Mesa 4-Max)</option>
+                <option value="4" selected>4 Oponentes (Mesa Completa 5-Max)</option>
+              </select>
+            </div>
+
+            <button id="btn-start-cash-game" class="btn-start-cash">ENTRAR NA MESA</button>
+          </div>
+        </section>
+
+        <!-- ABA 4: CARREIRA & SALA DE TROFÉUS -->
+        <section id="tab-career" class="portal-tab-content career-section hidden">
+          <div class="section-headline">
+            <h2 class="section-title">Estatísticas de Carreira & Sala de Troféus</h2>
+            <p class="section-subtitle">Seu histórico de desempenho nas mesas e relíquias conquistadas no circuito mundial.</p>
+          </div>
+
+          <div class="career-panel">
+            <div class="career-stats-grid">
+              <div class="career-stat-card">
+                <span class="career-stat-label">Total de Mãos</span>
+                <span id="stat-total-hands" class="career-stat-number">0</span>
+              </div>
+              <div class="career-stat-card">
+                <span class="career-stat-label">Mãos Vencidas</span>
+                <span id="stat-hands-won" class="career-stat-number">0</span>
+              </div>
+              <div class="career-stat-card">
+                <span class="career-stat-label">Taxa de Vitória</span>
+                <span id="stat-win-rate" class="career-stat-number">0%</span>
+              </div>
+              <div class="career-stat-card">
+                <span class="career-stat-label">Maior Pote Ganho</span>
+                <span id="stat-biggest-pot" class="career-stat-number highlight-gold">R$ 0</span>
+              </div>
+            </div>
+
+            <div class="trophies-showcase-box">
+              <h3 class="section-title" style="font-size: 16px;">🏆 Galeria de Troféus Conquistados</h3>
+              <div id="career-trophies-grid" class="trophies-grid">
+                <!-- Preenchido via PortalRenderer -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 5: LOJA VIP DE COSMÉTICOS -->
+        <section id="tab-shop" class="portal-tab-content shop-section hidden">
+          <div class="section-headline">
+            <h2 class="section-title">Loja de Cosméticos VIP</h2>
+            <p class="section-subtitle">Personalize suas mesas, baralhos e ambientes usando o saldo ganho nos torneios.</p>
+          </div>
+
+          <div class="shop-subtabs">
+            <button class="shop-subtab-btn active" data-shop-tab="felts">🎨 Feltros & Mesas</button>
+            <button class="shop-subtab-btn" data-shop-tab="decks">🃏 Versos de Baralho</button>
+            <button class="shop-subtab-btn" data-shop-tab="environments">🌆 Cenários VIP</button>
+          </div>
+
+          <div id="shop-items-grid" class="shop-items-grid">
+            <!-- Preenchido dinamicamente via PortalRenderer -->
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Modal Roleta Diária de Fichas -->
+      <div id="daily-spin-modal" class="daily-spin-modal hidden">
+        <div class="daily-modal-content">
+          <button id="btn-close-daily-modal" class="btn-close-modal">✕</button>
+          <h3 class="section-title">🎡 Roleta da Fortuna VIP</h3>
+          <p class="section-subtitle">Gire a roleta e ganhe fichas grátis para sua banca!</p>
+
+          <div class="wheel-container">
+            <div id="lucky-wheel-disc" class="lucky-wheel-disc">🎯</div>
+          </div>
+
+          <div id="wheel-result-msg" class="wheel-result-msg"></div>
+
+          <button id="btn-spin-wheel" class="btn-spin-wheel">GIRAR ROLETA</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 2. TELA DA MESA DE JOGO (MESA 3D REALISTA)     -->
+    <!-- ============================================== -->
+    <div id="screen-game" class="game-screen hidden">
+      
+      <!-- HUD Superior -->
+      <header class="top-hud">
+        <div class="hud-left">
+          <button id="btn-save-and-exit" class="hud-btn" style="background: rgba(34, 197, 94, 0.2); border-color: #22c55e; color: #4ade80;" title="Salvar partida e voltar ao Portal">💾 Salvar & Sair</button>
+          <button id="btn-exit-to-portal" class="hud-btn" title="Voltar ao Portal">🚪 Portal</button>
+          <div id="hud-blinds" class="hud-badge">Blinds: R$ 10 / R$ 20</div>
+          <div id="hud-hand-count" class="hud-badge">Mão #1</div>
+        </div>
+        <div class="hud-right">
+          <div id="hud-status" class="hud-badge">Etapa: Pré-Flop</div>
+          <button id="btn-toggle-chat" class="hud-btn" title="Abrir/Fechar Chat">💬 Chat</button>
+          <button id="btn-audio-toggle" class="hud-btn" title="Alternar Som">🔊</button>
+        </div>
+      </header>
+
+      <!-- Palco Central com a Mesa -->
+      <main class="poker-stage">
+        <div class="poker-table-3d">
+          
+          <!-- Crupiê Fotorrealista no Topo da Mesa -->
+          <div class="table-dealer-figure">
+            <div class="dealer-avatar-circle">
+              <img src="assets/images/dealer.jpg" alt="Crupiê Elena" class="dealer-photo-img" />
+            </div>
+            <div class="dealer-tag">CRUPIÊ</div>
+          </div>
+
+          <div class="table-leather-rail">
+            <div class="table-felt">
+              <div class="table-spotlight"></div>
+
+              <!-- Pote Central e Fichas -->
+              <div class="center-pot-area">
+                <div id="pot-chips" class="pot-chips-stack"></div>
+                <div class="pot-badge">
+                  <span id="pot-amount" class="pot-amount">Pote Total : R$ 0</span>
+                </div>
+              </div>
+
+              <!-- Cartas Comunitárias (Flop, Turn, River) -->
+              <div id="community-cards" class="community-cards-container">
+                <!-- Preenchido via TableRenderer -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Assentos dos Jogadores ao Redor da Mesa -->
+          <div id="table-seats" class="table-seats-container">
+            <!-- Preenchido via SeatRenderer -->
+          </div>
+
+          <!-- Banner Flutuante de Vencedor -->
+          <div id="winner-banner" class="winner-announcement-banner hidden"></div>
+        </div>
+
+        <!-- Badge de Força de Mão do Jogador Humano -->
+        <div id="player-hand-rank" class="player-hand-rank-badge hidden">
+          <span class="rank-label">Sua Combinação:</span>
+          <span class="rank-name">Par de Áses</span>
+        </div>
+      </main>
+
+      <!-- Painel de Chat Lateral Retrátil -->
+      <aside id="chat-panel" class="chat-panel chat-collapsed">
+        <div class="chat-header">
+          <span class="chat-title">💬 Chat & Histórico</span>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+          <div class="chat-message system-msg">
+            <span class="chat-avatar">🎰</span>
+            <div class="chat-body">
+              <span class="chat-author">Crupiê:</span>
+              <span class="chat-text">Bem-vindo à mesa VIP de No-Limit Hold'em! Boa sorte a todos!</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Enviar mensagem..." maxlength="60">
+          <button id="btn-send-chat" class="btn-send-chat">Enviar</button>
+        </div>
+      </aside>
+
+      <!-- ============================================== -->
+      <!-- 3. BARRA DE AÇÕES INFERIOR (UI/UX DE APOSTAS)  -->
+      <!-- ============================================== -->
+      <footer class="bottom-controls-bar">
+        <div id="table-status-footer" class="table-status-footer">Aguardando início da mão...</div>
+
+        <!-- Popup do Slider de Apostas -->
+        <div id="raise-slider-popup" class="raise-slider-popup hidden">
+          <div class="raise-popup-header">
+            <span class="raise-popup-title">Ajustar Aposta</span>
+            <span id="raise-value-display" class="raise-value-badge">R$ 40</span>
+          </div>
+
+          <div class="quick-bet-buttons">
+            <button id="quick-min" class="quick-btn">Mín</button>
+            <button id="quick-half-pot" class="quick-btn">1/2 Pote</button>
+            <button id="quick-three-quarter" class="quick-btn">3/4 Pote</button>
+            <button id="quick-pot" class="quick-btn">Pote</button>
+            <button id="quick-max" class="quick-btn">Tudo</button>
+          </div>
+
+          <div class="slider-container">
+            <input type="range" id="bet-slider" class="vip-range-slider" min="20" max="1000" step="10" value="20">
+            <input type="number" id="bet-amount-input" class="bet-number-input" value="20" min="20" max="1000">
+          </div>
+
+          <button id="btn-confirm-raise" class="btn-confirm-raise">CONFIRMAR APOSTA</button>
+        </div>
+
+        <div id="player-controls" class="controls-wrapper disabled">
+          
+          <!-- Lado Esquerdo: Fichas de Cassino Rápidas -->
+          <div class="controls-left-section">
+            <div class="quick-chips-rack">
+              <button class="quick-chip-btn" data-value="10" title="Adicionar R$ 10">
+                <div class="quick-chip-disc chip-2k">
+                  <div class="chip-center-icon"></div>
+                </div>
+                <span class="quick-chip-val">R$ 10</span>
+              </button>
+
+              <button class="quick-chip-btn" data-value="50" title="Adicionar R$ 50">
+                <div class="quick-chip-disc chip-10k">
+                  <div class="chip-center-icon"></div>
+                </div>
+                <span class="quick-chip-val">R$ 50</span>
+              </button>
+
+              <button class="quick-chip-btn" data-value="250" title="Adicionar R$ 250">
+                <div class="quick-chip-disc chip-40k">
+                  <div class="chip-center-icon"></div>
+                </div>
+                <span class="quick-chip-val">R$ 250</span>
+              </button>
+
+              <button class="quick-chip-btn" data-value="1000" title="Adicionar R$ 1.000">
+                <div class="quick-chip-disc chip-100k">
+                  <div class="chip-center-icon"></div>
+                </div>
+                <span class="quick-chip-val">R$ 1K</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lado Direito: Botões de Ação Circulares -->
+          <div class="controls-right-section">
+            
+            <!-- Correr / Fold -->
+            <button id="btn-fold" class="circular-action-btn btn-fold-circle" title="Desistir da Mão">
+              <div class="action-circle-icon">
+                <span>✕</span>
+              </div>
+              <div class="action-circle-text">
+                <span class="action-main-label">Correr</span>
+                <span class="action-sub-label">Fold</span>
+              </div>
+            </button>
+
+            <!-- Mesa / Pagar -->
+            <button id="btn-check-call" class="circular-action-btn btn-call-circle" title="Mesa ou Pagar Aposta">
+              <div class="action-circle-icon">
+                <span>🪙</span>
+              </div>
+              <div class="action-circle-text">
+                <span id="call-btn-label" class="action-main-label">Mesa</span>
+                <span id="call-btn-amount" class="action-sub-label">Check</span>
+              </div>
+            </button>
+
+            <!-- Apostar / Subir -->
+            <button id="btn-raise" class="circular-action-btn btn-raise-circle" title="Aumentar Aposta">
+              <div class="action-circle-icon">
+                <span>▲</span>
+              </div>
+              <div class="action-circle-text">
+                <span class="action-main-label">Apostar</span>
+                <span class="action-sub-label">Raise</span>
+              </div>
+            </button>
+
+            <!-- All-In -->
+            <button id="btn-all-in" class="circular-action-btn btn-allin-circle" title="Apostar Todas as Fichas">
+              <div class="action-circle-icon">
+                <span>⚡</span>
+              </div>
+              <div class="action-circle-text">
+                <span class="action-main-label">All-In</span>
+                <span class="action-sub-label">Tudo</span>
+              </div>
+            </button>
+
+          </div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

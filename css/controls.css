@@ -1,0 +1,351 @@
+/**
+ * controls.css - Barra de ações circulares estilo GGPoker / WSOP Mobile e fichas rápidas
+ */
+
+.bottom-controls-bar {
+  width: 100%;
+  background: linear-gradient(0deg, rgba(8, 10, 14, 0.98) 0%, rgba(12, 16, 24, 0.9) 70%, rgba(12, 16, 24, 0) 100%);
+  padding: 8px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 300;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+.table-status-footer {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+}
+
+.controls-wrapper {
+  width: 100%;
+  max-width: 950px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 310;
+  pointer-events: auto !important;
+}
+
+.controls-wrapper.disabled {
+  opacity: 0.5;
+  filter: grayscale(40%);
+  pointer-events: none !important;
+}
+
+/* Lado Esquerdo: Fichas Rápidas e Botão de Emojis */
+.controls-left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-emoji-trigger {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(26, 32, 44, 0.9);
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  transition: transform var(--transition-fast);
+}
+
+.btn-emoji-trigger:hover {
+  transform: scale(1.1);
+  border-color: var(--gold-primary);
+}
+
+/* Fichas Rápidas */
+.quick-chips-rack {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-chip-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.quick-chip-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.quick-chip-disc {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px dashed #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.4);
+}
+
+.quick-chip-disc.chip-2k {
+  background: radial-gradient(circle, #0ea5e9 0%, #0369a1 100%);
+}
+
+.quick-chip-disc.chip-10k {
+  background: radial-gradient(circle, #ef4444 0%, #b91c1c 100%);
+}
+
+.quick-chip-disc.chip-40k {
+  background: radial-gradient(circle, #eab308 0%, #a16207 100%);
+}
+
+.quick-chip-disc.chip-100k {
+  background: radial-gradient(circle, #22c55e 0%, #15803d 100%);
+}
+
+.chip-center-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.quick-chip-val {
+  font-size: 10px;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+/* Lado Direito: Botões de Ação Circulares */
+.controls-right-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.circular-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.circular-action-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.action-circle-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: box-shadow var(--transition-fast);
+}
+
+.btn-fold-circle .action-circle-icon {
+  background: radial-gradient(circle, #ef4444 0%, #991b1b 100%);
+  border-color: #fca5a5;
+}
+
+.btn-call-circle .action-circle-icon {
+  background: radial-gradient(circle, #0ea5e9 0%, #0369a1 100%);
+  border-color: #7dd3fc;
+}
+
+.btn-raise-circle .action-circle-icon {
+  background: radial-gradient(circle, #eab308 0%, #a16207 100%);
+  border-color: #fde047;
+}
+
+.btn-allin-circle .action-circle-icon {
+  background: radial-gradient(circle, #f97316 0%, #c2410c 100%);
+  border-color: #fdba74;
+}
+
+.action-circle-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.action-main-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.action-sub-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+/* Popup do Slider de Apostas */
+.raise-slider-popup {
+  position: absolute;
+  bottom: 85px;
+  right: 20px;
+  width: 320px;
+  background: rgba(14, 18, 26, 0.96);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), var(--gold-glow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 320;
+  backdrop-filter: blur(12px);
+}
+
+.raise-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.raise-popup-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gold-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.raise-value-badge {
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.quick-bet-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.quick-btn {
+  flex: 1;
+  background: #1e293b;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: #e2e8f0;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.quick-btn:hover {
+  background: var(--gold-secondary);
+  color: #000;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vip-range-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold-secondary) 0%, rgba(255, 255, 255, 0.2) 100%);
+  outline: none;
+  cursor: pointer;
+}
+
+.vip-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.bet-number-input {
+  width: 65px;
+  background: #0f172a;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 6px;
+  text-align: right;
+  outline: none;
+}
+
+.btn-confirm-raise {
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  color: #1a1202;
+  font-weight: 900;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Popup de Emojis */
+.emoji-picker-popup {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  background: rgba(14, 18, 26, 0.95);
+  border: 1px solid var(--gold-primary);
+  border-radius: 12px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+  z-index: 320;
+}
+
+.emoji-select-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.emoji-select-btn:hover {
+  transform: scale(1.2);
+  background: rgba(212, 175, 55, 0.2);
+}

@@ -1,0 +1,848 @@
+/**
+ * portal.css - Estilização do Portal de Poker VIP, Modo Campanha Mundial, Sala Online com Código e Salvar/Continuar
+ */
+
+.portal-screen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 50% 10%, #171b26 0%, #08090d 100%);
+  overflow: hidden;
+  z-index: 500;
+}
+
+/* Header VIP do Portal - Altura Fixa Imutável */
+.portal-header {
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  max-height: 56px;
+  flex-shrink: 0;
+  background: rgba(12, 16, 24, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 100;
+}
+
+.portal-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-crown {
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(240, 192, 90, 0.6));
+}
+
+.brand-title {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.portal-user-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-bankroll-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 26, 38, 0.9);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 20px;
+  padding: 4px 14px;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.bankroll-icon {
+  font-size: 15px;
+}
+
+.bankroll-amount {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.vip-tier-badge {
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid #ffd700;
+  border-radius: 12px;
+  padding: 3px 10px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.user-level-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 90px;
+}
+
+.level-text {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.xp-bar-bg {
+  width: 100%;
+  height: 5px;
+  background: #1e293b;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: var(--gold-gradient);
+  transition: width 0.4s ease;
+}
+
+.btn-daily-bonus {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border: 1px solid #fde047;
+  border-radius: 10px;
+  padding: 6px 12px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  transition: transform var(--transition-fast);
+}
+
+.btn-daily-bonus:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Corpo do Portal - Rolagem Fluida com Barra Dourada */
+.portal-main {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  justify-content: flex-start;
+}
+
+.portal-main::-webkit-scrollbar {
+  width: 7px;
+}
+
+.portal-main::-webkit-scrollbar-track {
+  background: rgba(8, 10, 14, 0.6);
+  border-radius: 4px;
+}
+
+.portal-main::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+
+/* Banner de Partida Salva */
+.saved-match-banner {
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.95) 0%, rgba(36, 59, 85, 0.95) 100%);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 10px;
+  padding: 10px 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), var(--gold-glow);
+  animation: pulseSaved 2s infinite alternate;
+}
+
+@keyframes pulseSaved {
+  0% { border-color: var(--gold-secondary); }
+  100% { border-color: var(--gold-primary); }
+}
+
+.saved-match-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-match-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.saved-match-tag {
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--gold-primary);
+  letter-spacing: 1px;
+}
+
+.saved-match-title {
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.saved-match-sub {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+.saved-match-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-resume-match {
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 900;
+  color: #1a1202;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  transition: transform var(--transition-fast);
+}
+
+.btn-resume-match:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-discard-match {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-discard-match:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+/* Navegação por Abas */
+.portal-nav-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+
+.portal-nav-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 6px 16px;
+  color: #94a3b8;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.portal-nav-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.portal-nav-tab.active {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+/* Padrão Unificado para Todas as Abas do Portal */
+.portal-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.section-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.section-subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.campaign-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.campaign-city-card {
+  background: rgba(18, 22, 31, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.campaign-city-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 16px rgba(212, 175, 55, 0.2);
+}
+
+.campaign-city-card.locked {
+  filter: grayscale(60%);
+  opacity: 0.7;
+}
+
+.city-card-banner {
+  height: 125px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.city-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(10, 13, 18, 0.95) 100%);
+}
+
+.chapter-completed-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #22c55e;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: 900;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.chapter-locked-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ef4444;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: 900;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.city-info-badge {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.city-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chapter-title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.city-card-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.chapter-desc {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.3;
+  min-height: 28px;
+}
+
+.chapter-stats-row {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(10, 13, 18, 0.7);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+.c-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-stat-label {
+  font-size: 9px;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.c-stat-val {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.highlight-gold {
+  color: var(--gold-primary);
+}
+
+.trophy-preview {
+  font-size: 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.trophy-label {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.trophy-val {
+  color: var(--gold-light);
+  font-weight: 800;
+}
+
+.btn-play-chapter {
+  margin-top: auto;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 800;
+  color: #1a1202;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(212, 175, 55, 0.3);
+  transition: transform var(--transition-fast);
+}
+
+.btn-play-chapter:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.btn-play-chapter:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #334155;
+  color: #94a3b8;
+  box-shadow: none;
+}
+
+.btn-unlock-chapter {
+  margin-top: auto;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  border: 1px solid #38bdf8;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(14, 165, 233, 0.4);
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.btn-unlock-chapter:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 5px 15px rgba(14, 165, 233, 0.6);
+}
+
+/* 2. MESA RÁPIDA (CASH GAME) */
+.cash-game-panel {
+  max-width: 580px;
+  background: rgba(18, 22, 31, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+}
+
+.cash-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cash-form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-primary);
+}
+
+.cash-select {
+  padding: 10px 12px;
+  background: #0d1117;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+}
+
+.btn-start-cash {
+  margin-top: 6px;
+  padding: 12px;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 8px;
+  color: #1a1202;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* 3. SALA ONLINE COM CÓDIGO */
+.online-rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.online-card-box {
+  background: rgba(18, 22, 31, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.online-card-title {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.online-card-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.room-created-info {
+  background: rgba(10, 14, 20, 0.9);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--gold-glow);
+}
+
+.room-code-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.display-room-code {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+  background: #0d1117;
+  border-radius: 8px;
+  padding: 4px 18px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.room-actions-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-copy-code, .btn-copy-link {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-copy-code:hover, .btn-copy-link:hover {
+  background: var(--gold-secondary);
+  color: #000;
+}
+
+.input-room-code {
+  padding: 14px;
+  background: #0d1117;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: var(--font-title);
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.input-room-code:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* 4. SALA DE TROFÉUS & CARREIRA */
+.career-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.career-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.career-stat-card {
+  background: rgba(18, 22, 31, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.career-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.career-stat-number {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.trophies-showcase-box {
+  background: rgba(14, 18, 26, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trophies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.trophy-item-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 10px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fef08a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.no-trophies-msg {
+  color: #64748b;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Modal Roleta Diária */
+.daily-spin-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.daily-modal-content {
+  width: 100%;
+  max-width: 440px;
+  background: #121620;
+  border: 2px solid var(--gold-primary);
+  border-radius: 20px;
+  padding: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), var(--gold-glow);
+  position: relative;
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.wheel-container {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+.lucky-wheel-disc {
+  font-size: 80px;
+  transition: transform 2s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.wheel-result-msg {
+  font-size: 14px;
+  font-weight: 800;
+  color: #4ade80;
+  min-height: 20px;
+}
+
+.btn-spin-wheel {
+  padding: 12px 28px;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 10px;
+  color: #1a1202;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+}

@@ -1,0 +1,348 @@
+/**
+ * table.css - Mesa de Poker estilo GGPoker e WSOP com Wood Racetrack, Crupiê fotorrealista e Total Pot
+ */
+
+.game-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #171b26 0%, #08090d 100%);
+}
+
+/* Painel Superior / HUD */
+.top-hud {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(180deg, rgba(8, 10, 14, 0.95) 0%, rgba(8, 10, 14, 0) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 200;
+}
+
+.hud-left, .hud-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-badge {
+  background: rgba(18, 22, 31, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hud-btn {
+  background: rgba(18, 22, 31, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  color: var(--gold-primary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.hud-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold-primary);
+}
+
+/* Palco Central */
+.poker-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Mesa Oval de Poker - Imutável e Perfeitamente Centralizada */
+.poker-table-3d {
+  width: 860px;
+  height: 450px;
+  max-width: 94vw;
+  max-height: 56vh;
+  position: relative;
+  border-radius: 225px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 10px 25px rgba(0, 0, 0, 0.8);
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+/* Badge de Força de Mão do Jogador - Flutuante Absoluto Sem Deslocar a Mesa */
+.player-hand-rank-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 24px;
+  background: rgba(12, 16, 24, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 20px;
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 10px rgba(212, 175, 55, 0.2);
+  z-index: 250;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+.player-hand-rank-badge.hidden {
+  display: none !important;
+}
+
+.player-hand-rank-badge .rank-label {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.player-hand-rank-badge .rank-name {
+  color: var(--gold-light);
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Racetrack de Madeira Nobre e Borda de Couro Padded */
+.table-leather-rail {
+  width: 100%;
+  height: 100%;
+  border-radius: 225px;
+  background: radial-gradient(ellipse at center, #2e1a0f 0%, #150b06 100%);
+  padding: 16px;
+  position: relative;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -4px 10px rgba(0, 0, 0, 0.9);
+  border: 2px solid #3d2315;
+}
+
+.table-leather-rail::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 218px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+}
+
+/* Superfície de Feltro */
+.table-felt {
+  width: 100%;
+  height: 100%;
+  border-radius: 210px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85);
+  border: 4px solid #140d08;
+}
+
+.env-felt-emerald .table-felt {
+  background: var(--felt-emerald);
+}
+
+.env-felt-royal-blue .table-felt {
+  background: var(--felt-royal-blue);
+}
+
+.env-felt-crimson .table-felt {
+  background: var(--felt-crimson);
+}
+
+.env-felt-obsidian .table-felt {
+  background: var(--felt-obsidian);
+}
+
+.env-felt-purple .table-felt {
+  background: var(--felt-purple);
+}
+
+.env-felt-marble .table-felt {
+  background: var(--felt-marble);
+}
+
+.env-felt-neon .table-felt {
+  background: var(--felt-neon);
+}
+
+.table-spotlight {
+  position: absolute;
+  width: 480px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+/* Crupiê / Dealer no Topo da Mesa */
+.table-dealer-figure {
+  position: absolute;
+  top: -46px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.dealer-avatar-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-primary);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.dealer-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dealer-tag {
+  background: rgba(14, 18, 26, 0.95);
+  border: 1px solid var(--gold-secondary);
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gold-primary);
+  margin-top: -6px;
+  letter-spacing: 1px;
+}
+
+/* Placar de Pote Total */
+.center-pot-area {
+  position: absolute;
+  top: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.pot-badge {
+  background: rgba(10, 14, 20, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 14px;
+  padding: 4px 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.pot-amount {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffeb99;
+  letter-spacing: 0.5px;
+}
+
+.pot-chips-stack {
+  position: absolute;
+  top: -22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cartas Comunitárias - Centralizadas no Feltro */
+.community-cards-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 60;
+}
+
+.community-card-slot {
+  width: 58px;
+  height: 84px;
+  border-radius: 6px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+}
+
+.community-card-slot.empty {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Banner de Vencedor */
+.winner-announcement-banner {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  border: 2px solid var(--gold-primary);
+  border-radius: 16px;
+  padding: 16px 36px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.6);
+  z-index: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.winner-announcement-banner.banner-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.winner-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--gold-primary);
+}
+
+.winner-player {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 3px 0;
+}
+
+.winner-hand {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.winner-payout {
+  font-size: 19px;
+  font-weight: 900;
+  color: #4ade80;
+}

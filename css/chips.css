@@ -1,0 +1,50 @@
+/**
+ * chips.css - Fichas de poker estilizadas em 3D para apostas e pote
+ */
+
+.poker-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.4), inset 0 -2px 3px rgba(0, 0, 0, 0.4);
+  border: 3px dashed #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.poker-chip::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.chip-red {
+  background: radial-gradient(circle, #e53935 0%, #b71c1c 100%);
+  border-color: #ffebee;
+}
+
+.chip-green {
+  background: radial-gradient(circle, #43a047 0%, #1b5e20 100%);
+  border-color: #e8f5e9;
+}
+
+.chip-blue {
+  background: radial-gradient(circle, #1e88e5 0%, #0d47a1 100%);
+  border-color: #e3f2fd;
+}
+
+.chip-purple {
+  background: radial-gradient(circle, #8e24aa 0%, #4a148c 100%);
+  border-color: #f3e5f5;
+}
+
+.chip-black {
+  background: radial-gradient(circle, #424242 0%, #212121 100%);
+  border-color: var(--gold-secondary);
+}

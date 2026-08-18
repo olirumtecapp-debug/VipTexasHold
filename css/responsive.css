@@ -1,0 +1,340 @@
+/**
+ * responsive.css - Responsividade total para todos os dispositivos (Smartphones, Tablets, Desktop e Play Store / WebViews)
+ */
+
+/* ========================================================= */
+/* 1. DISPOSITIVOS TABLET & TELAS MÉDIAS (<= 1024px)         */
+/* ========================================================= */
+@media (max-width: 1024px) {
+  .poker-table-3d {
+    width: 760px;
+    height: 400px;
+    max-height: 52vh;
+  }
+
+  .community-cards-container {
+    bottom: 24%;
+    gap: 8px;
+  }
+
+  .community-card-slot {
+    width: 52px;
+    height: 76px;
+  }
+
+  .poker-card {
+    width: 52px;
+    height: 76px;
+  }
+
+  .poker-card.mini {
+    width: 44px;
+    height: 64px;
+  }
+
+  .portal-header {
+    padding: 0 18px;
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
+    flex-shrink: 0;
+  }
+
+  .portal-user-bar {
+    gap: 12px;
+  }
+
+  .bankroll-amount {
+    font-size: 14px;
+  }
+}
+
+/* ========================================================= */
+/* 2. DISPOSITIVOS MOBILE / SMARTPHONES (<= 768px)          */
+/* ========================================================= */
+@media (max-width: 768px) {
+  /* Escala Automática da Mesa no Palco Central */
+  .poker-stage {
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .poker-table-3d {
+    width: 100%;
+    max-width: 520px;
+    height: 320px;
+    max-height: 48vh;
+    border-radius: 160px;
+  }
+
+  .table-leather-rail {
+    padding: 10px;
+    border-radius: 160px;
+  }
+
+  .table-felt {
+    border-radius: 150px;
+  }
+
+  .table-spotlight {
+    width: 320px;
+    height: 180px;
+  }
+
+  /* Crupiê no Mobile */
+  .table-dealer-figure {
+    top: -38px;
+  }
+
+  .dealer-avatar-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dealer-tag {
+    font-size: 8px;
+    padding: 1px 6px;
+  }
+
+  /* Pote Central */
+  .center-pot-area {
+    top: 22%;
+  }
+
+  .pot-badge {
+    padding: 2px 10px;
+  }
+
+  .pot-amount {
+    font-size: 11px;
+  }
+
+  /* Cartas Comunitárias */
+  .community-cards-container {
+    bottom: 25%;
+    gap: 4px;
+  }
+
+  .community-card-slot {
+    width: 38px;
+    height: 56px;
+    border-radius: 4px;
+  }
+
+  .poker-card.gg-style {
+    width: 38px;
+    height: 56px;
+    padding: 2px;
+    border-radius: 4px;
+  }
+
+  .poker-card.gg-style .card-rank {
+    font-size: 11px;
+  }
+
+  .poker-card.gg-style .card-suit-mini {
+    font-size: 8px;
+  }
+
+  .poker-card.gg-style .card-suit-main {
+    font-size: 16px;
+  }
+
+  /* Assentos dos Jogadores no Mobile */
+  .avatar-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar-circle-frame {
+    width: 44px;
+    height: 44px;
+  }
+
+  .neon-timer-ring {
+    width: 54px;
+    height: 54px;
+  }
+
+  .player-info-card {
+    min-width: 70px;
+    padding: 2px 6px;
+  }
+
+  .player-name {
+    font-size: 9px;
+    max-width: 65px;
+  }
+
+  .player-chips {
+    font-size: 10px;
+  }
+
+  .poker-card.mini {
+    width: 34px;
+    height: 50px;
+    padding: 2px;
+  }
+
+  .poker-card.mini .card-rank {
+    font-size: 10px;
+  }
+
+  .poker-card.mini .card-suit-mini {
+    font-size: 7px;
+  }
+
+  .poker-card.mini .card-suit-main {
+    font-size: 13px;
+  }
+
+  /* Ajuste de Posições dos Assentos para Mobile */
+  .seat-bottom-center {
+    bottom: -24px;
+  }
+
+  .seat-top-left {
+    top: -18px;
+    left: 12%;
+  }
+
+  .seat-top-right {
+    top: -18px;
+    right: 12%;
+  }
+
+  .seat-left-flank {
+    top: 48%;
+    left: 4px;
+    transform: translateY(-50%);
+  }
+
+  .seat-right-flank {
+    top: 48%;
+    right: 4px;
+    transform: translateY(-50%);
+  }
+
+  .player-hand-rank-badge {
+    bottom: 4px;
+    right: 8px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  /* Barra de Ações Inferior Mobile */
+  .bottom-controls-bar {
+    padding: 6px 12px 10px;
+    gap: 4px;
+  }
+
+  .controls-wrapper {
+    gap: 8px;
+  }
+
+  .btn-emoji-trigger {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .quick-chips-rack {
+    gap: 4px;
+  }
+
+  .quick-chip-disc {
+    width: 32px;
+    height: 32px;
+  }
+
+  .quick-chip-val {
+    font-size: 8px;
+  }
+
+  .controls-right-section {
+    gap: 8px;
+  }
+
+  .action-circle-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .action-main-label {
+    font-size: 9px;
+  }
+
+  .action-sub-label {
+    font-size: 8px;
+  }
+
+  /* Popup de Raise no Mobile */
+  .raise-slider-popup {
+    width: 90vw;
+    right: 5vw;
+    bottom: 75px;
+    padding: 10px;
+  }
+
+  /* Header do Portal no Mobile */
+  .portal-header {
+    height: auto;
+    padding: 10px 14px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .portal-user-bar {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .user-level-box {
+    min-width: 80px;
+  }
+
+  .user-bankroll-box {
+    padding: 4px 10px;
+  }
+
+  .portal-nav-tabs {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .portal-nav-tab {
+    padding: 8px 12px;
+    font-size: 12px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .campaign-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================= */
+/* 3. TELAS ULTRA PEQUENAS (<= 400px)                       */
+/* ========================================================= */
+@media (max-width: 400px) {
+  .poker-table-3d {
+    height: 280px;
+    border-radius: 140px;
+  }
+
+  .quick-chips-rack {
+    display: none; /* Oculta fichas no rodapé para economizar espaço e priorizar botões de ação */
+  }
+
+  .action-circle-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+}
