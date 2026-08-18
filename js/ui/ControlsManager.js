@@ -200,7 +200,7 @@ export class ControlsManager {
     } else {
       const actualCall = Math.min(human.chips, callAmount);
       if (callLabelEl) callLabelEl.textContent = 'Pagar';
-      if (callAmountEl) callAmountEl.textContent = `$${actualCall.toLocaleString('en-US')}`;
+      if (callAmountEl) callAmountEl.textContent = `R$ ${actualCall.toLocaleString('pt-BR')}`;
     }
 
     // Configurar limites do Raise
@@ -230,7 +230,7 @@ export class ControlsManager {
     if (this.betSlider) this.betSlider.value = val;
     if (this.betAmountInput) this.betAmountInput.value = val;
     if (this.raiseValueDisplay) {
-      this.raiseValueDisplay.textContent = `$${val.toLocaleString('en-US')}`;
+      this.raiseValueDisplay.textContent = `R$ ${val.toLocaleString('pt-BR')}`;
     }
   }
 

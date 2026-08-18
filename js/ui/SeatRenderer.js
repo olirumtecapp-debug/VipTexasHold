@@ -16,11 +16,11 @@ export class SeatRenderer {
     this.seatsContainer.innerHTML = '';
 
     const positionClasses = [
-      'seat-bottom-center', // Jogador Humano (Seat 0)
-      'seat-top-left',      // Bot 1 - Mark Vance (Topo Esquerdo)
-      'seat-top-right',     // Bot 2 - Isabella Rossi (Topo Direito)
-      'seat-right-flank',   // Bot 3 - Dmitri Volkov (Lateral Direita)
-      'seat-left-flank'     // Bot 4 - Sophia Chen (Lateral Esquerda)
+      'seat-bottom-center', // Assento 0: Jogador Humano (Hero - 6h)
+      'seat-left-flank',     // Assento 1: Lateral Esquerda (9h)
+      'seat-top-left',       // Assento 2: Topo Esquerdo (11h)
+      'seat-top-right',      // Assento 3: Topo Direito (1h)
+      'seat-right-flank'     // Assento 4: Lateral Direita (3h)
     ];
 
     players.forEach((player, idx) => {

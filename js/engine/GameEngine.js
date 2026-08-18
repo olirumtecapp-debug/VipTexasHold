@@ -40,6 +40,7 @@ export class GameEngine {
     this.lastActionPlayerIndex = -1;
     this.handCount = 0;
     this.minRaise = this.bigBlind;
+    this.raisesThisStreet = 0;
     this.botThinkingTimer = null;
 
     this.listeners = {
@@ -139,6 +140,7 @@ export class GameEngine {
     this.deck.reset();
     this.potManager.reset();
     this.minRaise = this.bigBlind;
+    this.raisesThisStreet = 0;
 
     if (this.handCount > 1) {
       this.dealerIndex = (this.dealerIndex + 1) % this.players.length;
@@ -199,18 +201,12 @@ export class GameEngine {
     const activeNonFolded = this.players.filter(p => !p.folded);
     const activeCanAct = this.players.filter(p => !p.folded && !p.isAllIn);
 
-    if (activeNonFolded.length <= 1) {
-      this.handleEarlyWin();
-      return;
-    }
-
-    if (activeCanAct.length <= 1 && this.isStreetBettingComplete()) {
-      this.advanceAllStreetsToShowdown();
-      return;
-    }
-
-    if (this.isStreetBettingComplete()) {
-      this.nextStreet();
+    if (activeNonFolded.length <= 1 || activeCanAct.length === 0) {
+      if (this.isStreetBettingComplete()) {
+        this.nextStreet();
+      } else {
+        this.advanceTurn();
+      }
       return;
     }
 
@@ -226,8 +222,8 @@ export class GameEngine {
       player: currentPlayer,
       highestBet: this.potManager.getHighestBet(),
       currentBet: this.potManager.getCurrentBet(currentPlayer),
-      potTotal: this.potManager.getTotalPot(),
-      minRaise: this.minRaise
+      minRaise: this.minRaise,
+      canCheck: this.potManager.getHighestBet() === this.potManager.getCurrentBet(currentPlayer)
     });
 
     if (!currentPlayer.isHuman) {
@@ -255,7 +251,8 @@ export class GameEngine {
       minRaise: this.minRaise,
       bigBlind: this.bigBlind,
       stage: this.state,
-      communityCards: this.communityCards
+      communityCards: this.communityCards,
+      raisesThisStreet: this.raisesThisStreet
     });
 
     if (decision.quote && Math.random() < 0.45) {
@@ -346,6 +343,8 @@ export class GameEngine {
       this.minRaise = raiseIncrement;
     }
 
+    this.raisesThisStreet++;
+
     this.players.forEach(p => {
       if (p !== player && !p.folded && !p.isAllIn) {
         p.actedThisStreet = false;
@@ -396,6 +395,7 @@ export class GameEngine {
 
   nextStreet() {
     this.potManager.endStreet();
+    this.raisesThisStreet = 0;
     this.players.forEach(p => {
       p.actedThisStreet = false;
       p.lastAction = null;
